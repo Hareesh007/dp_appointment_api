@@ -13,8 +13,6 @@ class GeneralController < ApplicationController
      msg = { :status => status, :message => "New Doctor Name Added.!", :doc_list => @doctor }
     render json: msg, status: status
      else
-       # msg = { :status => 'error', :message => "Enter all the values", :doc_list => @doc_list.errors.full_messages }
-       # render json: msg, :status => 422
        render :json => { :errors => @doctor.errors }, :status => 422
      end
    end
@@ -32,11 +30,7 @@ class GeneralController < ApplicationController
        msg = {:status => status, :message => 'New Patient created.', :patient_list => @patient}
        render json: msg, status: status
      else
-       # msg = { :status => 'error', :message => "Enter all the values", :patient_list => @patient.errors.full_messages }
-       #  render json: msg ,:status => 422
-       #  msg = { :status => 'error', :message => "Enter all the values", :doc_list => @doc_list.errors.full_messages }
-       # json_response(msg,400)
-       render :json => { :errors => @patient.errors }, :status => status
+       render :json => { :errors => @patient.errors }, :status => 422
      end
    end
 
@@ -53,7 +47,7 @@ class GeneralController < ApplicationController
         msg = {:status => status, :message => 'New Appointment created!.', :appointment_list => @appointment}
         render json: msg, status: status
       else
-         render :json => { :errors => @appointment.errors}, :status => status
+         render :json => { :errors => @appointment.errors}, :status => 422
       end
    end
 

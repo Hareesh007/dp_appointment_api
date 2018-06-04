@@ -8,9 +8,7 @@ class UsersController < ApplicationController
     response = {message: 'User created successfully'}
     render json: response, status: :created
   else
-    # binding.pry
     render :json => { :errors => @user.errors }, :status => 422
-
   end
  end
  def login
